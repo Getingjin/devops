@@ -1,0 +1,4 @@
+---
+- hosts: disk
+  roles:
+  - init_disk 

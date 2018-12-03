@@ -1,0 +1,4 @@
+---
+- hosts: init
+  roles:
+  - init_ntp 

@@ -1,0 +1,11 @@
+--- 
+  - name: install ntp server 
+    apt: name=ntp state=latest
+  - name: ntp agent 
+    cron: name="ntp-server update" job="/usr/sbin/ntpdate ntpdate_server  {{ ntpdate_server }}" minute=30  state=present user=root
+  - name: start service
+    service: name=ntpd state=started
+  - name: Update time on server.
+    shell: ntpdate   {{ ntpdate_server }} && hwclock --systohc
+    ignore_errors: true 
+  
